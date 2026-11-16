@@ -69,3 +69,22 @@ print(f"Total revenue: ${dict_total:.2f}")
 #csv.reader uses column positions which is short but it can get mixed up
 #the dict reader uses column names which is more reliable and less likely to make a mistake
 
+
+# Exercise 7: Sales summary by product
+import csv
+from datetime import datetime
+
+summary = {}
+with open("data/sales.csv") as f:
+    reader = csv.reader(f)
+    next(reader)
+    for row in reader:
+        product = row[0]
+        total = float(row[1]) * int(row[2])
+        if product in summary:
+            summary[product] = summary[product] + total
+        else:
+            summary[product] = total
+
+for product in sorted(summary):
+    print(f"{product}: ${summary[product]:.2f}")
