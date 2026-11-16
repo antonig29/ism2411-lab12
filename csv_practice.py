@@ -33,3 +33,24 @@ with open("data/sales.csv") as f:
         total_revenue = total_revenue + total
         print(f"{product}: {quantity} units × ${price:.2f} = ${total:.2f}")
 print(f"Total revenue: ${total_revenue:.2f}")
+
+
+# Exercise 5: filter and write
+original_count = 0
+written_count = 0
+with open("data/sales.csv") as infile:
+    with open("data/cleaned.csv", "w", newline="") as outfile:
+        reader = csv.reader(infile)
+        writer = csv.writer(outfile)
+        next(reader)
+        writer.writerow(["Product", "Price", "Qty", "Total"])
+        for row in reader:
+            original_count = original_count + 1
+            price = float(row[1])
+            quantity = int(row[2])
+            total = price * quantity
+            if total > 100:
+                writer.writerow([row[0], price, quantity, total])
+                written_count = written_count + 1
+print(f"Rows written: {written_count}, rows in original: {original_count}")
+
