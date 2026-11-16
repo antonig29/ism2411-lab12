@@ -1,3 +1,9 @@
+# Question 1: Python vs. Excel
+# Excel is faster for quick work because you can see and click the data directly. Python is better for repeating the same steps on many files or very large datasets.
+# Question 2: Append mode log
+# A business could use an append mode log to record every sale or order a store processes, with one line per transaction and a timestamp. Append mode is the right tool because it adds each new line to the end of the file without erasing the old ones.
+
+
 with open("data/sales.csv") as f:
     print(f.readline())
 
