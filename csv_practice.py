@@ -88,3 +88,15 @@ with open("data/sales.csv") as f:
 
 for product in sorted(summary):
     print(f"{product}: ${summary[product]:.2f}")
+
+
+#exercise 8: Append mode log
+log_total = 0
+with open("data/sales.csv") as f:
+    reader = csv.reader(f)
+    next(reader)
+    for row in reader:
+        log_total = log_total + float(row[1]) * int(row[2])
+
+with open("data/run_log.txt", "a") as log_file:
+    log_file.write(f"{datetime.now()} - Total revenue: ${log_total:.2f}\n")
